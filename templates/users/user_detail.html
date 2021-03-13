@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block page_title %}
+  {{user_obj.first_name}}'s Profile
+{% endblock page_title %}
+
+
+{% block content %}
+<div class="container shadow-lg lg:w-5/12 md:w-1/2 xl:w-1/4 mx-auto my-10 flex flex-col items-center p-6 ">
+  {% if user_obj.avatar %}
+      <div class="h-20 w-20 rounded-full bg-cover" style="background-image: url({{user_obj.avatar.url}});"></div>
+  {% else %}
+    {% include 'mixins/user_avatar.html' %}
+  {% endif %}
+      <h1 class="text-2xl mt-5">{{user_obj.first_name}}</h2>
+  </div>
+<p class="text-center text-red-400 text-xl mt-5 h-screen"><a href="{% url 'users:update' %}">Edit Profile</a></p>
+{% endblock content %} 

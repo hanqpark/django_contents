@@ -1,0 +1,18 @@
+<div class="h-auto rounded shadow-lg p-5">
+    <div class="flex justify-bewteen items-center mb-5">
+        <div>
+            <span class="font-medium text-xl">{{review.created_by.first_name}}</span>
+            <span class="inline-block bg-gray-200 rounded-full px-3 text-sm font-semibold text-gray-700 mx-2">{{review.rating}}</span>
+        </div>
+        {% if user.is_authenticated and review.created_by.pk == user.pk%}
+        <span class="inline-block bg-red-200 rounded-full px-3 text-sm font-semibold text-gray-700 mr-2">
+            {% if kind == "book" %}
+                <a href="{% url 'reviews:delete' book.pk review.pk%}?kind=book" class="text-red-600">Delete</a>
+            {% else %}
+                <a href="{% url 'reviews:delete' movie.pk review.pk%}?kind=movie" class="text-red-600">Delete</a>
+            {% endif %}
+        </span>
+        {% endif %}
+    </div>
+    <div>{{review.text}}</div>
+  </div>

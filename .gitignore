@@ -1,0 +1,10 @@
+.replit
+Pipfile.lock
+poetry.lock
+pyproject.toml
+.vscode/
+.prettierignore
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml

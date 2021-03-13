@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block page_title %}
+  {{movie.title}}
+{% endblock page_title %}
+
+{% block content %}
+
+<div class="flex flex-col items-center bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+<h2 class="font-bold">{{movie.title}}</h2>
+<div class="flex items-center my-2">
+  <div class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700">{{movie.year}}</div>
+  <div class="bg-orange-400 text-white px-3 shadow-md py-1 rounded-full mx-4">{{movie.category}}</div>
+  <div class="text-red-600">♥︎{{movie.rating}}</div>
+</div>
+<div class="my-2">Director:
+  <div class="inline-block bg-white shadow-md rounded-full px-3 py-1 text-sm font-semibold text-gray-700">{{movie.director}}</div>
+</div>
+<div class="my-2">Cast: {% for i in movie.cast.all %} 
+  <div class="inline-block bg-white shadow-md rounded-full px-3 py-1 text-sm font-semibold text-gray-700">{{i}}</div> {% endfor %}
+</div>
+<div class="flex">
+  <a class="bg-blue-400 hover:bg-blue-600 text-white font-bold mt-4 py-2 px-4 rounded" href="{% url 'movies:update' movie.pk %}">Edit Movie</a>
+  {% if user.is_authenticated %}
+    {% include "mixins/fav_button.html" with obj=movie kind='movie' %}
+    <a class="ml-5 bg-blue-400 hover:bg-blue-600 text-white font-bold mt-4 py-2 px-4 rounded" href="{% url 'reviews:write' movie.pk %}?kind=movie">
+      Write Review!
+    </a>
+  {% endif %}
+</div>
+
+<div class="mt-10 pt-10 w-full border-t-2">
+  <div class="flex items-center justify-center">
+    <h4 class="font-medium text-2xl mr-2">Reviews |</h4>
+    <div class="flex items-center">
+        <div>
+            <span class="font-bold text-xl">{{movie.reviews.count}}</span>
+            <span>review{{movie.reviews.count|pluralize}}</span>
+        </div>
+    </div>
+  </div>
+  <div class="mt-10 flex">
+      {% for review in movie.reviews.all %}
+          <div class="border-section">
+              <div class="mb-3 flex">
+                  <div class="flex flex-col ml-5">
+                    {% include 'mixins/review.html' with review=review kind="movie"%}
+                  </div>
+              </div>
+              <p>{{review.review}}</p>
+          </div>
+      {% endfor %}    
+  </div>
+</div>
+</div>
+
+{% endblock content %}
