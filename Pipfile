@@ -7,6 +7,7 @@ name = "pypi"
 Django = "*"
 django-seed = "*"
 pillow = "*"
+six = "==1.4.1"
 
 [dev-packages]
 awsebcli = "*"
