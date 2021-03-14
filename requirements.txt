@@ -41,3 +41,4 @@ texttable==1.6.3
 urllib3==1.25.11
 wcwidth==0.1.9
 websocket-client==0.58.0
+psycopg==2.8.4

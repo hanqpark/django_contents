@@ -8,6 +8,7 @@ Django = "*"
 django-seed = "*"
 pillow = "*"
 six = "==1.4.1"
+python-dotenv = "*"
 
 [dev-packages]
 awsebcli = "*"
