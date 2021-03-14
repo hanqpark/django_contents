@@ -7,9 +7,10 @@ name = "pypi"
 Django = "*"
 django-seed = "*"
 pillow = "*"
-python-dotenv = "*"
 awsebcli = "*"
 psycopg2 = "*"
+django-dotenv = "*"
+pipenv-to-requirements = "*"
 
 [dev-packages]
 
