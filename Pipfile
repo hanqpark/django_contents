@@ -7,11 +7,10 @@ name = "pypi"
 Django = "*"
 django-seed = "*"
 pillow = "*"
-six = "==1.4.1"
 python-dotenv = "*"
+awsebcli = "*"
 
 [dev-packages]
-awsebcli = "*"
 
 [requires]
 python_version = "3.8"
