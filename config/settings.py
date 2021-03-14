@@ -149,7 +149,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['django-contents.eba-4qnpix3e.ap-northeast-2.elasticbeanstalk.com']
 X_FRAME_OPTIONS = '*'
 
 
