@@ -9,19 +9,32 @@
 {% block content %}
 <div class="font-medium text-2xl text-center my-5">Write your review</div>
 
+<form action="{% url 'reviews:review' obj.pk %}?kind=book" method="POST" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col items-center">
+{% csrf_token %}
+
 {% if kind == "book" %}
-<form action="{% url 'reviews:review' obj.pk %}?kind=book" method="POST" class="w-1/2 mx-auto">
-    {% csrf_token %}
-    {{form}}
-    <button class="btn-link mt-5">Submit Review</button>
-</form>
+    {% for field in form %}
+    <div class="mb-5">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="{{field.auto_id}}">{{field.label}}</label>
+        <div class="shadow appearance-none border rounded text-gray-700 w-60 leading-tight focus:outline-none focus:shadow-outline">
+        {{field}}
+        </div>
+    </div>
+    {% endfor %}
+
 {% else %}
-<form action="{% url 'reviews:review' obj.pk %}?kind=movie" method="POST" class="w-1/2 mx-auto">
-    {% csrf_token %}
-    {{form}}
-    <button class="btn-link mt-5">Submit Review</button>
-</form>
+
+    {% for field in form %}
+    <div class="mb-5">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="{{field.auto_id}}">{{field.label}}</label>
+        <div class="shadow appearance-none border rounded text-gray-700 w-60 leading-tight focus:outline-none focus:shadow-outline">
+        {{field}}
+        </div>
+    </div>
+  {% endfor %}
 {% endif %}
+  <button class="bg-blue-400 hover:bg-blue-600 text-white font-bold mt-2 py-2 px-4 rounded w-60">Submit Review</button>
+</form>
 
 {% endblock content %}
     
