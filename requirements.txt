@@ -1,0 +1,6 @@
+Django="*"
+django-seed = "*"
+pillow = "*"
+python-dotenv = "*"
+awsebcli = "*"
+psycopg2 = "*"
